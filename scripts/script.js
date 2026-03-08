@@ -13,7 +13,7 @@ const fillIssues = (json) => {
     json.data.forEach((issue) => {
         const issueDiv = document.createElement('div');
 
-        issueDiv.className = 'p-4 bg-white shadow-md rounded border-t-3';
+        issueDiv.className = 'p-4 pb-20 bg-white shadow-md rounded border-t-3 relative';
 
         (issue.status === 'open') ? issueDiv.classList.add('border-[#00A96E]') : issueDiv.classList.add('border-[#A855F7]');
 
@@ -33,11 +33,12 @@ const fillIssues = (json) => {
                 ${addLabels()}
             </div>
 
-            <hr class="-mx-4 mb-4 border-t-1 border-[#E4E4E7]">
+            <hr class="border-t border-[#E4E4E7] absolute bottom-16 left-0 right-0">
 
-            <p class="text-xs text-[#64748B] mb-2">#<span>1</span> by <span>john_doe</span></p>
+            <p class="text-xs text-[#64748B] absolute bottom-10">#<span>${issue.id}</span> by <span>${issue.author}</span></p>
 
-            <p class="text-xs text-[#64748B]">1/15/2024</p>
+            <p class="text-xs text-[#64748B] absolute bottom-4">${new Date(issue.createdAt).toLocaleDateString('en-US')}</p>
+
         `;
 
         issuesContainer.append(issueDiv);
@@ -70,7 +71,7 @@ const fillIssues = (json) => {
                         labelDiv = `<div class="${className} norm"> ${label.toUpperCase()}</div>`;
                     }
                 };
-                     
+
                 allLabels += labelDiv;
             });
 
