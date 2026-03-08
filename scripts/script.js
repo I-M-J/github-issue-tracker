@@ -30,6 +30,22 @@ const showCount = (openIssueCount, closedIssueCount) => {
     // console.log(openIssueCount);
 }
 
+const switchActiveTab = (eventTarget) => {
+    tabBtnList.forEach((tabBtn) => {
+        if (tabBtn === eventTarget) {
+            tabBtn.classList.add('active');
+
+            activeTab = tabBtn;
+
+            loadIssues();
+
+            return;
+        }
+
+        tabBtn.classList.remove('active');
+    })
+}
+
 const fillIssues = (json) => {
     const issuesContainer = document.getElementById('issues-container');
     issuesContainer.innerHTML = '';
@@ -37,7 +53,14 @@ const fillIssues = (json) => {
     let openIssueCount = 0;
     let closedIssueCount = 0;
 
+    if (json.data.length === 0) {
+        showCount(openIssueCount, closedIssueCount);
+
+        return;
+    }
     json.data.forEach((issue) => {
+
+        console.log(issue);
 
         // console.log(activeTab.id, `btn-${issue.status}`);
 
@@ -58,7 +81,7 @@ const fillIssues = (json) => {
             closedIssueCount++;
         }
 
-        showCount(openIssueCount, closedIssueCount);
+        console.log(openIssueCount, closedIssueCount);
 
         issueDiv.innerHTML = `
             <div class="flex justify-between items-center mb-3">
@@ -121,24 +144,33 @@ const fillIssues = (json) => {
             return allLabels;
         }
 
+        showCount(openIssueCount, closedIssueCount);
+
     });
+}
+
+const inputSearch = document.getElementById('input-search');
+
+const searchIssues = () => {
+    const inputSearchValue = inputSearch.value;
+
+    activeTab = btnAll;
+
+    switchActiveTab(activeTab);
+
+    url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputSearchValue}`;
+
+    fetch(url).then((response) => response.json()).then((json) => {
+        fillIssues(json);
+    });
+    
 }
 
 loadIssues();
 
 document.getElementById('tab-btns').addEventListener('click', (event) => {
-    tabBtnList.forEach((tabBtn) => {
-        if (tabBtn === event.target) {
-            tabBtn.classList.add('active');
+    switchActiveTab(event.target);
 
-            activeTab = tabBtn;
-
-            loadIssues();
-
-            return;
-        }
-
-        tabBtn.classList.remove('active');
-    })
+    inputSearch.value = '';
 });
 

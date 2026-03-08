@@ -47,16 +47,17 @@
             <div class="join flex gap-4">
                 <div>
                     <label class="input join-item focus-within:ring-offset-2 focus-within:ring-2 rounded">
-                        <input class="placeholder:[font-family:'Font Awesome_6_Free',Arial,sans-serif]" type="text"
+                        <i class="text-[#64748B] fa-solid fa-magnifying-glass"></i>
+                        <input id="input-search" class="" type="text"
                             placeholder="Search issues..." required />
                     </label>
                 </div>
-                <button class="btn btn-primary join-item rounded">Search</button>
+                <button onclick="searchIssues()" class="btn btn-primary join-item rounded">Search</button>
             </div>
         </section>
     </header>
 
-    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+    <!--  -->
 
     <main class="bg-[#F8FAFC] py-15">
         <section id="tab-btns" class="max-w-277.5 mx-auto p-6 space-x-2 bg-white rounded-lg shadow mb-4">
