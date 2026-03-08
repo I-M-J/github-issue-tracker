@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues | GitHub Issue Tracker</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+
+    <!-- Tailwind CSS and Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header class="border-b-1 border-[#E9E9E9] py-5">
+        <section class="flex justify-between items-center max-w-360 w-9/10 mx-auto">
+            <div class="flex items-center gap-1">
+                <div class="max-w-9">
+                    <img src="assets/github-logo.png" alt="github-logo">
+                </div>
+
+                <h2 class="font-semibold text-2xl text-[#1F2937]">GitHub Issues Tracker</h2>
+            </div>
+
+            <div class="join flex gap-4">
+                <div>
+                    <label class="input join-item focus-within:ring-offset-2 focus-within:ring-2 rounded">
+                        <input class="placeholder:[font-family:'Font Awesome_6_Free',Arial,sans-serif]" type="text"
+                            placeholder="&#xf002;    Search issues..." required />
+                    </label>
+                </div>
+                <button class="btn btn-primary join-item rounded">Search</button>
+            </div>
+        </section>
+    </header>
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+    <main class="bg-[#F8FAFC] py-15">
+        <section class="max-w-277.5 mx-auto p-6 space-x-2 bg-white rounded-lg shadow mb-4">
+            <button class="btn h-10 w-30 font-medium text-base text-[#64748B] bg-white">All</button>
+            <button class="btn h-10 w-30 font-medium text-base text-[#64748B] bg-white">Open</button>
+            <button class="btn h-10 w-30 font-medium text-base text-[#64748B] bg-white">Closed</button>
+        </section>
+
+        <section class="max-w-277.5 mx-auto bg-white p-6 flex items-center justify-between rounded-t-lg shadow border-b-1 border-[#E4E4E7]">
+            <div class="flex items-center gap-2">
+                <div class="p-2.25 bg-[#ECE4FF] rounded-full">
+                    <img src="assets/Aperture.png" alt="Aperture">
+                </div>
+
+                <div>
+                    <h2 class="font-semibold text-xl text-[#1F2937]"><span>0</span> Issues</h2>
+
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 items-center">
+                <div class="h-3 w-3 bg-[#00A96E] rounded-full"></div>
+
+                <p class="font-medium text-base text-[#64748B] mr-2">Open</p>
+
+                <div class="h-3 w-3 bg-[#A855F7] rounded-full"></div>
+
+                <p class="font-medium text-base text-[#64748B]">Close</p>
+            </div>
+        </section>
+
+        <section class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-4 shadow rounded-b-lg">
+            <div class="p-4 bg-white shadow-md rounded">
+                <div class="flex justify-between items-center mb-3">
+                    <img src="assets/Open-Status.png" alt="">
+
+                    <img src="assets/Closed- Status .png" alt="">
+
+                    <div class="h-6 w-20 rounded-[100px] high text-xs font font-medium grid place-items-center">HIGH</div>
+                </div>
+
+                <h2 class="font-semibold text-sm mb-8">Fix navigation menu on mobile devices</h2>
+
+                <p class="font-normal text-xs text-[#64748B] mb-3">The navigation menu doesn't collapse properly on mobile devices...</p>
+
+                <div class="flex flex-wrap mb-4">
+                    <div class="px-2 py-1.5 rounded-[100px] inline-block text-xs font-medium bug high"><i class="fa-solid fa-bug"></i> BUG</div>
+                </div>
+
+                <hr class="-mx-4 mb-4 border-t-1 border-[#E4E4E7]">
+
+                <p class="text-xs text-[#64748B] mb-2">#<span>1</span> by <span>john_doe</span></p>
+
+                <p class="text-xs text-[#64748B]">1/15/2024</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+</body>
+
+</html>

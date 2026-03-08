@@ -1,0 +1,18 @@
+.high {
+    background-color: #FEECEC;
+    color: #EF4444;
+}
+
+.medium {
+    background-color: #FFF6D1;
+    color: #F59E0B;
+}
+
+.low {
+    background-color: #EEEFF2;
+    color: #9CA3AF;
+}
+
+.bug.high {
+    border: 1px solid #FECACA;
+}
