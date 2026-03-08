@@ -36,3 +36,13 @@
     color: #9CA3AF;
     border: 1px solid gray;
 }
+
+.btn-tab {
+    background-color: white;
+    color: #64748B;
+}
+
+.btn-tab.active {
+    background-color: #4A00FF;
+    color: white;
+}

@@ -6,16 +6,59 @@ const loadIssues = () => {
     });
 }
 
+const btnAll = document.getElementById('btn-all');
+const btnOpen = document.getElementById('btn-open');
+const btnClosed = document.getElementById('btn-closed');
+
+const issuesCountText = document.getElementById('issues-count');
+
+let activeTab = btnAll;
+
+const tabBtnList = [btnAll, btnOpen, btnClosed];
+
+const showCount = (openIssueCount, closedIssueCount) => {
+    if (activeTab === tabBtnList[0]) {
+        issuesCountText.textContent = `${openIssueCount + closedIssueCount}`;
+    }
+    else if (activeTab === tabBtnList[1]) {
+        issuesCountText.textContent = openIssueCount;
+    }
+    else if ((activeTab === tabBtnList[2])) {
+        issuesCountText.textContent = closedIssueCount;
+    }
+
+    // console.log(openIssueCount);
+}
+
 const fillIssues = (json) => {
     const issuesContainer = document.getElementById('issues-container');
     issuesContainer.innerHTML = '';
 
+    let openIssueCount = 0;
+    let closedIssueCount = 0;
+
     json.data.forEach((issue) => {
+
+        // console.log(activeTab.id, `btn-${issue.status}`);
+
+        if (activeTab != btnAll && !(activeTab.id === `btn-${issue.status}`)) {
+            return;
+        }
+
         const issueDiv = document.createElement('div');
 
         issueDiv.className = 'p-4 pb-20 bg-white shadow-md rounded border-t-3 relative';
 
-        (issue.status === 'open') ? issueDiv.classList.add('border-[#00A96E]') : issueDiv.classList.add('border-[#A855F7]');
+        if (issue.status === 'open') {
+            issueDiv.classList.add('border-[#00A96E]');
+            openIssueCount++;
+        }
+        else if (issue.status === 'closed') {
+            issueDiv.classList.add('border-[#A855F7]');
+            closedIssueCount++;
+        }
+
+        showCount(openIssueCount, closedIssueCount);
 
         issueDiv.innerHTML = `
             <div class="flex justify-between items-center mb-3">
@@ -61,7 +104,7 @@ const fillIssues = (json) => {
                 let labelDiv = ``;
 
                 for (const arrLabel of classLabels) {
-                    console.log(label, arrLabel);
+                    // console.log(label, arrLabel);
 
                     if (label.includes(arrLabel)) {
                         labelDiv = `<div class="${className} ${arrLabel}">${icons[classLabels.indexOf(arrLabel)]} ${label.toUpperCase()}</div>`;
@@ -81,5 +124,21 @@ const fillIssues = (json) => {
     });
 }
 
-
 loadIssues();
+
+document.getElementById('tab-btns').addEventListener('click', (event) => {
+    tabBtnList.forEach((tabBtn) => {
+        if (tabBtn === event.target) {
+            tabBtn.classList.add('active');
+
+            activeTab = tabBtn;
+
+            loadIssues();
+
+            return;
+        }
+
+        tabBtn.classList.remove('active');
+    })
+});
+
