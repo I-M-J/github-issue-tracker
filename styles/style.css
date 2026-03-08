@@ -13,6 +13,26 @@
     color: #9CA3AF;
 }
 
-.bug.high {
+.bug {
+    background-color: #FEECEC;
+    color: #EF4444;
     border: 1px solid #FECACA;
+}
+
+.help {
+    background-color: #FFF6D1;
+    color: #F59E0B;
+    border: 1px solid #FDE68A;
+}
+
+.enhance {
+    background-color: #DEFCE8;
+    color: #00A96E;
+    border: 1px solid #BBF7D0;
+}
+
+.norm {
+    background-color: #EEEFF2;
+    color: #9CA3AF;
+    border: 1px solid gray;
 }
