@@ -46,3 +46,13 @@
     background-color: #4A00FF;
     color: white;
 }
+
+.details-open {
+    background-color: #00A96E;
+    color: white;
+}
+
+.details-closed {
+    background-color: #EF4444;
+    color: white;
+}

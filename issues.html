@@ -48,8 +48,7 @@
                 <div>
                     <label class="input join-item focus-within:ring-offset-2 focus-within:ring-2 rounded">
                         <i class="text-[#64748B] fa-solid fa-magnifying-glass"></i>
-                        <input id="input-search" class="" type="text"
-                            placeholder="Search issues..." required />
+                        <input id="input-search" class="" type="text" placeholder="Search issues..." required />
                     </label>
                 </div>
                 <button onclick="searchIssues()" class="btn btn-primary join-item rounded">Search</button>
@@ -58,6 +57,7 @@
     </header>
 
     <!--  -->
+    <button class="btn" onclick="issueModal.showModal()">open modal</button>
 
     <main class="bg-[#F8FAFC] py-15">
         <section id="tab-btns" class="max-w-277.5 mx-auto p-6 space-x-2 bg-white rounded-lg shadow mb-4">
@@ -66,7 +66,8 @@
             <button id="btn-closed" class="btn h-10 w-30 font-medium text-base btn-tab">Closed</button>
         </section>
 
-        <section class="max-w-277.5 mx-auto bg-white p-6 flex items-center justify-between rounded-t-lg shadow border-b-1 border-[#E4E4E7]">
+        <section
+            class="max-w-277.5 mx-auto bg-white p-6 flex items-center justify-between rounded-t-lg shadow border-b-1 border-[#E4E4E7]">
             <div class="flex items-center gap-2">
                 <div class="p-2.25 bg-[#ECE4FF] rounded-full">
                     <img src="assets/Aperture.png" alt="Aperture">
@@ -92,22 +93,26 @@
 
 
 
-        <section id="issues-container" class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-4 shadow rounded-b-lg">
+        <section id="issues-container"
+            class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-4 shadow rounded-b-lg">
             <div class="p-4 bg-white shadow-md rounded border-t-3 border-[#00A96E]">
                 <div class="flex justify-between items-center mb-3">
                     <img src="assets/Open-Status.png" alt="">
 
                     <img src="assets/Closed- Status .png" alt="">
 
-                    <div class="h-6 w-20 rounded-[100px] high text-xs font font-medium grid place-items-center">HIGH</div>
+                    <div class="h-6 w-20 rounded-[100px] high text-xs font font-medium grid place-items-center">HIGH
+                    </div>
                 </div>
 
                 <h2 class="font-semibold text-sm mb-8">Fix navigation menu on mobile devices</h2>
 
-                <p class="font-normal text-xs text-[#64748B] mb-3">The navigation menu doesn't collapse properly on mobile devices...</p>
+                <p class="font-normal text-xs text-[#64748B] mb-3">The navigation menu doesn't collapse properly on
+                    mobile devices...</p>
 
                 <div class="flex flex-wrap mb-4">
-                    <div class="px-2 py-1.5 rounded-[100px] inline-block text-xs font-medium bug high"><i class="fa-solid fa-bug"></i> BUG</div>
+                    <div class="px-2 py-1.5 rounded-[100px] inline-block text-xs font-medium bug high"><i
+                            class="fa-solid fa-bug"></i> BUG</div>
                 </div>
 
                 <hr class="-mx-4 mb-4 border-t-1 border-[#E4E4E7]">
@@ -119,6 +124,25 @@
 
         </section>
 
+
+        <!-- Open the modal using ID.showModal() method -->
+
+        <dialog id="issueModal" class="modal">
+            <div class="modal-box  p-8 max-w-175 w-9/10 rounded-xl">
+                <div id="issue-details" class="space-y-6">
+                    
+                    <div id="loading">
+                        <span class="loading loading-dots loading-xl"></span>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
 
 
