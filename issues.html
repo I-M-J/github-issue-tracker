@@ -35,7 +35,7 @@
 
 <body>
     <header class="border-b-1 border-[#E9E9E9] py-5">
-        <section class="flex justify-between items-center max-w-360 w-9/10 mx-auto">
+        <section class="flex flex-col gap-4 md:flex-row md:gap-0 justify-between items-center max-w-360 w-9/10 mx-auto">
             <div class="flex items-center gap-1">
                 <div class="max-w-9">
                     <img src="assets/github-logo.png" alt="github-logo">
@@ -56,15 +56,15 @@
         </section>
     </header>
 
-    <main class="bg-[#F8FAFC] py-15">
-        <section id="tab-btns" class="max-w-277.5 mx-auto p-6 space-x-2 bg-white rounded-lg shadow mb-4">
+    <main class="bg-[#F8FAFC] py-15 px-4 xl:px-0">
+        <section id="tab-btns" class="max-w-277.5 mx-auto p-6 flex justify-evenly sm:block md:space-x-2 bg-white rounded-lg shadow mb-4">
             <button id="btn-all" class="btn h-10 w-30 font-medium text-base btn-tab active">All</button>
             <button id="btn-open" class="btn h-10 w-30 font-medium text-base btn-tab">Open</button>
             <button id="btn-closed" class="btn h-10 w-30 font-medium text-base btn-tab">Closed</button>
         </section>
 
         <section
-            class="max-w-277.5 mx-auto bg-white p-6 flex items-center justify-between rounded-t-lg shadow border-b-1 border-[#E4E4E7]">
+            class="max-w-277.5 mx-auto bg-white p-6 flex flex-col sm:flex-row gap-4 sm:gap-0 items-center justify-between rounded-t-lg shadow border-b-1 border-[#E4E4E7]">
             <div class="flex items-center gap-2">
                 <div class="p-2.25 bg-[#ECE4FF] rounded-full">
                     <img src="assets/Aperture.png" alt="Aperture">
@@ -88,12 +88,12 @@
             </div>
         </section>
 
-        <section id="issues-loading" class="max-w-277.5 mx-auto bg-[#FBFBFB] flex items-center justify-center py-20 shadow rounded-b-lg">
+        <section id="issues-loading" class="max-w-277.5 mx-auto bg-[#FBFBFB] flex items-center justify-center py-10 md:py-20 shadow rounded-b-lg">
             <span class="loading loading-dots loading-xl"></span>
         </section>
 
         <section id="issues-container"
-            class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-4 shadow rounded-b-lg">
+            class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 shadow rounded-b-lg">
             <div class="p-4 bg-white shadow-md rounded border-t-3 border-[#00A96E]">
                 <div class="flex justify-between items-center mb-3">
                     <img src="assets/Open-Status.png" alt="">
