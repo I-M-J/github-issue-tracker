@@ -56,9 +56,6 @@
         </section>
     </header>
 
-    <!--  -->
-    <button class="btn" onclick="issueModal.showModal()">open modal</button>
-
     <main class="bg-[#F8FAFC] py-15">
         <section id="tab-btns" class="max-w-277.5 mx-auto p-6 space-x-2 bg-white rounded-lg shadow mb-4">
             <button id="btn-all" class="btn h-10 w-30 font-medium text-base btn-tab active">All</button>
@@ -91,7 +88,9 @@
             </div>
         </section>
 
-
+        <section id="issues-loading" class="max-w-277.5 mx-auto bg-[#FBFBFB] flex items-center justify-center py-20 shadow rounded-b-lg">
+            <span class="loading loading-dots loading-xl"></span>
+        </section>
 
         <section id="issues-container"
             class="max-w-277.5 mx-auto gap-3 bg-[#FBFBFB] p-6 grid grid-cols-4 shadow rounded-b-lg">
@@ -130,10 +129,7 @@
         <dialog id="issueModal" class="modal">
             <div class="modal-box  p-8 max-w-175 w-9/10 rounded-xl">
                 <div id="issue-details" class="space-y-6">
-                    
-                    <div id="loading">
-                        <span class="loading loading-dots loading-xl"></span>
-                    </div>
+
                 </div>
                 <div class="modal-action">
                     <form method="dialog">

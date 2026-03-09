@@ -1,11 +1,3 @@
-const loadIssues = () => {
-    const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
-
-    fetch(url).then((response) => response.json()).then((json) => {
-        fillIssues(json);
-    });
-}
-
 const btnAll = document.getElementById('btn-all');
 const btnOpen = document.getElementById('btn-open');
 const btnClosed = document.getElementById('btn-closed');
@@ -14,6 +6,10 @@ const issuesCountText = document.getElementById('issues-count');
 
 const issueModal = document.getElementById('issueModal');
 const issueDetails = document.getElementById('issue-details');
+
+const issuesLoading = document.getElementById('issues-loading');
+
+const issuesContainer = document.getElementById('issues-container');
 
 let activeTab = btnAll;
 
@@ -40,8 +36,6 @@ const switchActiveTab = (eventTarget) => {
 
             activeTab = tabBtn;
 
-            loadIssues();
-
             return;
         }
 
@@ -49,8 +43,28 @@ const switchActiveTab = (eventTarget) => {
     })
 }
 
+const displayIssuesLoading = (value) => {
+    if (value) {
+        issuesLoading.hidden = !(value);
+        issuesContainer.hidden = value;
+    }
+    else {
+        issuesLoading.hidden = !(value);
+        issuesContainer.hidden = value;
+    }
+}
+
+const loadIssues = () => {
+    const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
+
+    displayIssuesLoading(true);
+
+    fetch(url).then((response) => response.json()).then((json) => {
+        fillIssues(json);
+    });
+}
+
 const fillIssues = (json) => {
-    const issuesContainer = document.getElementById('issues-container');
     issuesContainer.innerHTML = '';
 
     let openIssueCount = 0;
@@ -59,11 +73,13 @@ const fillIssues = (json) => {
     if (json.data.length === 0) {
         showCount(openIssueCount, closedIssueCount);
 
+        displayIssuesLoading(false);
+
         return;
     }
     json.data.forEach((issue) => {
 
-        console.log(issue);
+        // console.log(issue);
 
         // console.log(activeTab.id, `btn-${issue.status}`);
 
@@ -84,7 +100,7 @@ const fillIssues = (json) => {
             closedIssueCount++;
         }
 
-        console.log(openIssueCount, closedIssueCount);
+        // console.log(openIssueCount, closedIssueCount);
 
         issueDiv.innerHTML = `
             <div class="flex justify-between items-center mb-3">
@@ -111,10 +127,11 @@ const fillIssues = (json) => {
         `;
 
         issuesContainer.append(issueDiv);
-
-        showCount(openIssueCount, closedIssueCount);
-
     });
+
+    displayIssuesLoading(false);
+
+    showCount(openIssueCount, closedIssueCount);
 }
 
 function addLabels(issueLabels) {
@@ -161,20 +178,21 @@ const searchIssues = () => {
 
     switchActiveTab(activeTab);
 
-    url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputSearchValue}`;
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputSearchValue}`;
 
+    displayIssuesLoading(true);
+    
     fetch(url).then((response) => response.json()).then((json) => {
         fillIssues(json);
     });
-
 }
-
-loadIssues();
 
 document.getElementById('tab-btns').addEventListener('click', (event) => {
     switchActiveTab(event.target);
 
     inputSearch.value = '';
+
+    loadIssues();
 });
 
 const createModal = (issueData) => {
@@ -237,3 +255,5 @@ document.getElementById('issues-container').addEventListener('click', (event) =>
         createModal(json.data);
     });
 });
+
+loadIssues();
